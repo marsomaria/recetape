@@ -2,7 +2,7 @@ import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
 import { GiNoodles, GiChopsticks } from "react-icons/gi";
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
-
+import {Splide, SplideSlide} from "@splidejs/react-splide";
 import { useState } from "react";import { useEffect } from "react";
 
 
@@ -19,36 +19,73 @@ function Category() {
   //   const data = await api.json();
   //   console.log(data);
   // }
+  const types = ["African", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish", "korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"];
+  const
+  const listitems = types.map((type) => 
+      <SLink to={"/cuisine/"+ type.toString()}>
+        <FaHamburger />
+        <h4>{type}</h4>
+      </SLink>
+  );
 
 
   return (
-    <List>
-        <SLink to={"/cuisine/Italian"}>
-            <FaPizzaSlice />
-            <h4>iTALIAN</h4>
-        </SLink>
-
-        <SLink to={"/cuisine/American"}>
+    
+   <List>
+    <Wrapper>
+    <Splide 
+                options={{
+                    perPage: 6,
+                    arrows: false,
+                    pagination: false,
+                    drag: "free",
+                    gap: "1rem",
+                    width: 700,
+            }}
+            >
+      {types.map( (type) => {
+        return (
+          <SplideSlide key={type}>
+            <SLink to={"/cuisine/"+ type.toString()}>
             <FaHamburger />
-            <h4>aMeERICAN</h4>
-        </SLink>
+            <h4>{type}</h4>
+          </SLink>
+          </SplideSlide>
 
-        <SLink to={"/cuisine/Thai"}>
-            <GiChopsticks />
-            <h4>Thai</h4>
-        </SLink>
+        );
+      })}
+    </Splide></Wrapper>
 
-        <SLink to={"/cuisine/Japanese"}>
-            <GiNoodles />
-            <h4>JAPENESE</h4>
-        </SLink>
+
+    {/* {listitems} */}
+    {/* //     <SLink to={"/cuisine/Italian"}>
+    //         <FaPizzaSlice />
+    //         <h4>iTALIAN</h4>
+    //     </SLink>
+
+    //     <SLink to={"/cuisine/American"}>
+    //         <FaHamburger />
+    //         <h4>aMeERICAN</h4>
+    //     </SLink>
+
+    //     <SLink to={"/cuisine/Thai"}>
+    //         <GiChopsticks />
+    //         <h4>Thai</h4>
+    //     </SLink>
+
+    //     <SLink to={"/cuisine/Japanese"}>
+    //         <GiNoodles />
+    //         <h4>JAPENESE</h4>
+    //     </SLink> */}
 
        
     </List>
   )
 }
 
-
+const Wrapper = styled.div`
+    margin: 0% 50%;    
+`;
 const List= styled.div`
   display: flex;
   justify-content: center;
