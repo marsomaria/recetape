@@ -1,60 +1,61 @@
 import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
-import { GiNoodles, GiChopsticks } from "react-icons/gi";
+import { GiNoodles, GiChopsticks,GiAfrica, GiTeapot,GiKnifeFork  } from "react-icons/gi";
+import { IconName } from "react-icons/fa";
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
-import { useState } from "react";import { useEffect } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import React from "react";
+import DOMPurify from "dompurify";
+import * as FontAwesome from "react-icons/fa";
 
 
 function Category() {
+  //const types = ["African", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish", "korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"];
+  const types = [{name:"African", icon:"<GiAfrica />"}, {name:"American", icon:"<FaHamburger />"}, {name:"British",icon:"<GiTeapot />"},{name:"Cajun", icon:"<CgBowl />"}, {name:"Caribbean",icon:"<GiPalmTree />"},{name:"Chinese",icon:"<GiNoodles />"}, {name:"Eastern European", icon:"<GiSpoon />"},{name:"European", icon:"<CiForkAndKnife />"},{name:"French", icon:"<GiCroissant />"},{name:"German", icon:"<GiSausage />"},{name:"Greek", icon:"<GiGreekTemple />"},{name:"Indian", icon:"<GiIndianPalace />"},{name:"Irish", icon:"<GiElfEar />"},{name:"Italian", icon:"<CiPizza />"},{name:"Japanese", icon:"<GiSushis />"},{name:"Jewish", icon:"<TbJewishStar />"},{name:"korean", icon:"<MdOutlineRiceBowl />"},{name:"Latin American", icon:"<GiCoffeeBeans />"},{name:"Mediterranean", icon:"<BsSun />"},{name:"Mexican", icon:"<GiNachos />"},{name:"Middle Eastern", icon:"<GiBubblingBowl />"},{name:"Nordic", icon:"<SiNordvpn />"},{name:"Southern", icon:"<GiChickenLeg />"},{name:"Spanish", icon:"<GiSpain />"},{name:"Thai", icon:"<GiChopsticks />"},{name:"Vietnamese",icon:"<GiSaucepan />"}];
+  // const Icon = props => {
+  //   const { iconName, size, color } = props;
+  //   const icon = React.createElement(FontAwesome[iconName]);
+  //   return <div style={{ fontSize: size, color: color }}>{icon}</div>;
+  // };
 
-  // const [cuisine, setCuisine] = useState([]);
+  // const types = [{name:"African", icon:"GiAfrica "}, {name:"American", icon:"FaHamburger "},  {name:"British",icon:"GiTeapot "}, {name:"Cajun", icon:"CgBowl "},  {name:"Caribbean",icon:"GiPalmTree "},   {name:"Chinese",icon:"GiNoodles "},  {name:"Eastern European", icon:"GiSpoon "}, {name:"European", icon:"CiForkAndKnife "}, {name:"French", icon:"GiCroissant "}, {name:"German", icon:"GiSausage "}, {name:"Greek", icon:"GiGreekTemple "},  {name:"Indian", icon:"GiIndianPalace "}, {name:"Irish", icon:"GiElfEar"}, {name:"Italian", icon:"CiPizza "}, {name:"Japanese", icon:"GiSushis "},  {name:"Jewish", icon:"TbJewishStar "}, {name:"korean", icon:"MdOutlineRiceBowl "}, {name:"Latin American", icon:"GiCoffeeBeans "}, {name:"Mediterranean", icon:"BsSun "}, {name:"Mexican", icon:"GiNachos "}, {name:"Middle Eastern", icon:"GiBubblingBowl "},  {name:"Nordic", icon:"SiNordvpn "}, {name:"Southern", icon:"GiChickenLeg "},{name:"Spanish", icon:"GiSpain "},{name:"Thai", icon:"GiChopsticks "}, {name:"Vietnamese",icon:"GiSaucepan "}];
+  console.log(types);
+  // const listitems = types.map((type) => 
+  //     <SLink to={"/cuisine/"+ type.toString()}>
+  //       <FaHamburger />
+  //       <h4>{type}</h4>
+  //     </SLink>
+  // );
 
-  //   //for make the call every tame the page reloads
-  //   useEffect(() => {
-  //       getCuisine();
-  //   }, []);
-  //   const getCuisine = async () => {
-  //   const api = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}`);
-  //   const data = await api.json();
-  //   console.log(data);
-  // }
-  const types = ["African", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish", "korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"];
-  const
-  const listitems = types.map((type) => 
-      <SLink to={"/cuisine/"+ type.toString()}>
-        <FaHamburger />
-        <h4>{type}</h4>
-      </SLink>
-  );
+
+    
 
 
   return (
     
    <List>
     <Wrapper>
-    <Splide 
-                options={{
-                    perPage: 6,
-                    arrows: false,
-                    pagination: false,
-                    drag: "free",
-                    gap: "1rem",
-                    width: 700,
-            }}
-            >
-      {types.map( (type) => {
-        return (
-          <SplideSlide key={type}>
-            <SLink to={"/cuisine/"+ type.toString()}>
-            <FaHamburger />
-            <h4>{type}</h4>
-          </SLink>
-          </SplideSlide>
+      <Splide options={{perPage: 6,arrows: false,pagination: false,drag: "free",gap: "1rem",width: 700, }}>
+        {types.map( (type) => {
+          
+          return (
+            <SplideSlide key={type.name}>
+              <SLink to={"/cuisine/"+ type.name}>
+                
+                {/* <div dangerouslySetInnerHTML={{ __html: type.icon }}></div>
+                <div>{type.icon}</div>
+                <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(type.icon) }}/> */}
+                <GiKnifeFork />
+                <h4>{type.name}</h4>
+              </SLink>
+            </SplideSlide>
 
-        );
-      })}
-    </Splide></Wrapper>
+          );
+        })}
+      </Splide>
+    </Wrapper>
 
 
     {/* {listitems} */}
