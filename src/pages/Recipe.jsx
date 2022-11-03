@@ -52,6 +52,9 @@ function Recipe() {
                 {activePlus === "details" && (
                 <div>
                     <p dangerouslySetInnerHTML={{ __html: details.diets }}></p>
+                    <p>{details.creditsText}</p>
+
+                    <p>Cuisine: {details.cuisines}</p>
                 </div>
                 )}
 

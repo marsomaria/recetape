@@ -37,7 +37,7 @@ function Category() {
     
    <List>
     <Wrapper>
-      <Splide options={{perPage: 6,arrows: false,pagination: false,drag: "free",gap: "1rem",width: 700, }}>
+      <Splide options={{perPage: 6,arrows: true,pagination: false,drag: "free",gap: "1rem",width: 700, }}>
         {types.map( (type) => {
           
           return (
@@ -81,6 +81,9 @@ function Category() {
 
        
     </List>
+
+
+
   )
 }
 

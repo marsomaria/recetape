@@ -51,7 +51,7 @@ function Popular() {
                     options={{
                         perPage: 4,
                         arrows: false,
-                        pagination: false,
+                        pagination: true,
                         drag: "free",
                         gap: "5rem",
                 }}

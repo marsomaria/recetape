@@ -52,7 +52,7 @@ function Veggie() {
                 options={{
                     perPage: 3,
                     arrows: false,
-                    pagination: false,
+                    pagination: true,
                     drag: "free",
                     gap: "5rem",
             }}
